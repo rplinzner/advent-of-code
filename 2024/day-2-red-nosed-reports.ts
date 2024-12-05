@@ -25,33 +25,39 @@ if (import.meta.main) {
     return true;
   };
 
-  reports.forEach((report) => {
-    if (isCorrect(report)) {
-      correct++;
-    }
-  });
+  const part1 = () => {
+    reports.forEach((report) => {
+      if (isCorrect(report)) {
+        correct++;
+      }
+    });
 
-  console.log("part1:", correct);
+    console.log(correct);
+  };
 
-  // part 2
   correct = 0;
 
-  reports.forEach((report) => {
-    if (isCorrect(report)) {
-      correct++;
-      return;
-    }
-
-    for (let i = 0; i < report.length; i++) {
-      const temp = [...report];
-      temp.splice(i, 1);
-
-      if (isCorrect(temp)) {
+  const part2 = () => {
+    reports.forEach((report) => {
+      if (isCorrect(report)) {
         correct++;
-        break;
+        return;
       }
-    }
-  });
 
-  console.log("part2", correct);
+      for (let i = 0; i < report.length; i++) {
+        const temp = [...report];
+        temp.splice(i, 1);
+
+        if (isCorrect(temp)) {
+          correct++;
+          break;
+        }
+      }
+    });
+
+    console.log(correct);
+  };
+
+  part1();
+  part2();
 }
